@@ -1,11 +1,14 @@
 import React from "react";
 import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
 
 export class WeatherList extends React.Component {
-    constructor() {
-        super();
-        this.state = {};
+    renderWeather(cityData) {
+        const name = cityData.city.name;
+        return (
+            <tr key={name}>
+                <td>{name}</td>
+            </tr>
+        );
     }
 
     render() {
@@ -19,13 +22,14 @@ export class WeatherList extends React.Component {
                         <th> Humidity </th>
                     </tr>
                 </thead>
-                <tbody />
+                <tbody>{this.props.weather.map(this.renderWeather)}</tbody>
             </table>
         );
     }
 }
 
 function mapStateToProps({ weather }) {
+    console.log(weather);
     return {
         weather
     };
