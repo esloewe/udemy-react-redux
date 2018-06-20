@@ -1,9 +1,15 @@
 import React from "react";
 import { connect } from "react-redux";
 
-export class WeatherList extends React.Component {
+class WeatherList extends React.Component {
     renderWeather(cityData) {
         const name = cityData.city.name;
+        const temps = cityData.list.map(weather => {
+            console.log("weather", weather);
+            weather.main.temp;
+        });
+        console.log("temps", temps);
+
         return (
             <tr key={name}>
                 <td>{name}</td>
